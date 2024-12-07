@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slideshow Headline</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Link ke file CSS -->
+</head>
+<body>
+  <!-- Kontainer Slideshow -->
+  <div class="slideshow-container">
+    <!-- Slideshow Gambar -->
+    <div class="slideshow">
+      <div class="headline" onclick="showImageWithDetails(0)">
+        <img src="attribute/2.png" alt="Headline 1">
+      </div>
+      <div class="headline" onclick="showImageWithDetails(1)">
+        <img src="attribute/3.png" alt="Headline 2">
+      </div>
+      <div class="headline" onclick="showImageWithDetails(2)">
+        <img src="attribute/4.png" alt="Headline 3">
+      </div>    
+    </div>
+  </div>
+
+  <!-- Modal untuk Detail -->
+  <div class="details-modal" id="details-modal">
+    <div class="details-content">
+      <span class="close" onclick="closeDetails()">&times;</span> <!-- Tanda "×" -->
+      <p id="headline-details">Detail informasi headline akan muncul di sini.</p>
+    </div>
+  </div>
+  
+
+  <script src="script.js"></script> <!-- Link ke file JavaScript -->
+</body>
+</html>

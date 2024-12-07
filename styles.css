@@ -1,0 +1,195 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body Styling */
+  body {
+    font-family: Arial, sans-serif; /* Keeps your current font settings */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image: url('attribute/Background.jpg'); /* Path to your photo */
+    background-size: cover; /* Ensures the photo covers the entire background */
+    background-position: center; /* Centers the photo */
+    background-repeat: no-repeat; /* Prevents tiling */
+    background-attachment: fixed; /* Keeps the background fixed when scrolling */
+}
+
+  
+  /* Slideshow Container */
+  .slideshow-container {
+    position: relative;
+    width: 90%;
+    max-width: 1250px;
+    height: 1700px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Headline Styling */
+  .slideshow {
+    display: flex;
+    flex-direction: column; /* Mengatur orientasi vertikal */
+    animation: slide-vertical 15s infinite;
+    height: 100%;
+  }
+  
+  .headline {
+    flex: 0 0 100%; /* Setiap slide memiliki tinggi 100% container */
+    height: 100%; /* Pastikan slide memiliki tinggi penuh */
+    display: flex; /* Agar gambar bisa dipusatkan */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-height: 200px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    user-select: none;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .headline img {
+    width: 100%; /* Gambar mengisi lebar kontainer */
+    height: 100%; /* Gambar mengisi tinggi kontainer */
+    object-fit: cover; /* Gambar tetap proporsional */
+    display: block; /* Hapus margin bawaan dari elemen gambar */
+    border-radius: 10px; /* Opsional, untuk sudut melengkung */
+  }
+
+  .headline-details {
+    white-space: pre-wrap; /* Menjaga spasi dan baris baru */
+    word-wrap: break-word; /* Membungkus kata panjang agar tidak keluar layar */
+    line-height: 1.5; /* Menambahkan spasi antar baris */
+    background: rgba(0, 0, 0, 0.5);
+}
+
+  
+  
+  /* Modal Styling */
+  .details-modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+  }
+  
+  .details-content {
+    background: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+  }
+  
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+
+
+  .slideshow-container.expanded {
+    transform: scale(2.0); /* Membesarkan kontainer 20% */
+    transition: transform 0.5s ease;
+    height: 100%; /* Menambahkan efek transisi */
+  }
+
+  .slideshow-container.shrinking {
+    transform: scale(1); /* Kembali ke ukuran semula */
+    transition: transform 0.5s ease; /* Transisi keluar */
+    /* Sembunyikan konten yang keluar dari kontainer */
+  }  
+  
+  /* Kontainer Gambar dan Detail */
+  .image-detail-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Penuh dalam container slideshow */
+    position: relative;
+    gap: 20px;
+    opacity: 0;  /* Mulai dengan transparansi 0 */
+    transform: translateX(100%); /* Mulai di luar layar */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Animasi untuk pergerakan dan transisi */
+  }
+  
+  /* Ketika transisi selesai, buat gambar dan detail muncul */
+  .image-detail-container.show {
+    transform: translateX(0); /* Pindahkan gambar dan detail ke tempatnya */
+    opacity: 1; /* Tampilkan gambar dan detail */
+  }
+  
+  .image-detail-container img {
+    max-width: 50%;  /* Gambar akan mengisi 50% lebar kontainer */
+    max-height: 80%; /* Gambar akan mengisi hingga 80% tinggi kontainer */
+    object-fit: contain;  /* Menjaga rasio aspek gambar tanpa distorsi */
+    border-radius: 10px;
+  }
+  
+  .image-detail-container .headline-details {
+    width: 50%;
+    height: 50%;
+    font-size: 18px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+  }
+  
+  /* Sembunyikan detail awalnya */
+  .image-detail-container.hidden {
+    display: none;
+  }
+
+  .button {
+    background-color: #007BFF; /* Warna tombol */
+    color: white; /* Warna teks */
+    border: none; /* Hapus border */
+    border-radius: 5px; /* Sudut melengkung */
+    padding: 10px 20px; /* Spasi dalam tombol */
+    font-size: 16px; /* Ukuran teks */
+    cursor: pointer; /* Menunjukkan bahwa tombol bisa diklik */
+    transition: background-color 0.3s ease; /* Transisi saat hover */
+}
+
+.button:hover {
+    background-color: #0056b3; /* Warna tombol saat hover */
+}
+  
+  
+  
+  /* Animation */
+  @keyframes slide-vertical {
+    0% { transform: translateY(0); }
+    33% { transform: translateY(-100%); } /* Slide kedua */
+    66% { transform: translateY(-200%); } /* Slide ketiga */
+    100% { transform: translateY(0); } /* Kembali ke slide pertama */
+  }
+  
+  @media (max-width: 768px) {
+    .slideshow-container {
+      height: 400px; /* Sesuaikan tinggi container pada layar kecil */
+    }
+  }
